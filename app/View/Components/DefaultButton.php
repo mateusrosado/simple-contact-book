@@ -11,7 +11,12 @@ class DefaultButton extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(
+        public string $linkto,
+        public string $id,
+        public string $class
+
+    )
     {
         //
     }

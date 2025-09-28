@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ContactBook')
+@section('title', 'Meus Contatos - ContactBook')
 
 @section('content')
 
