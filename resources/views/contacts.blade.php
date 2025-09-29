@@ -5,14 +5,19 @@
 @section('content')
     <section class="contacts">
         <h3>Olá, <span>{{auth()->user()->name}}</span>!</h3>
-
-        <div>
-            Parece que você ainda não tem contatos, clique no botão abaixo para começar.
-        </div>
+        @if($contacts)
+            @foreach($contacts as $contact)
+                <p>{{$contact->name}}</p>
+            @endforeach
+        @else  
+            <div>
+                Parece que você ainda não tem contatos, clique no botão abaixo para começar.
+            </div>
+        @endif
         <x-default-button id="btn-create-contact">Criar contato</x-default-button>
     </section>
-    <x-modal title="Criar anotação">
-        <form method="POST" action="{{ route('auth') }}" class="form">
+    <x-modal title="Novo contato">
+        <form method="POST" action="{{ route('contact.store') }}" class="form">
             @csrf
             <div class="formRow">
                 @error('name')
@@ -24,8 +29,14 @@
                 @error('phone')
                     <p class="error">{{ $message }}</p>
                 @enderror
-                <x-default-input id='phone' labelText='Telefone'/>
-                    </div>
+                <x-default-input id='phone' labelText='Telefone' value="{{ old('phone') }}" required/>
+            </div>
+            <div class="formRow">
+                @error('email')
+                    <p class="error">{{ $message }}</p>
+                @enderror
+                <x-default-input id='email' type='email' labelText='E-mail' value="{{ old('email') }}" required/>
+            </div>
             <div class="formRow">
                 <x-default-button type="submit">Criar Contato</x-default-button>
             </div>

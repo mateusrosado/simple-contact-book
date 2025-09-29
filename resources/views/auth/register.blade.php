@@ -5,7 +5,7 @@
 @section('content')
 
     <section class="register">
-        <form method="POST" action="{{ route('register.create') }}" class="form">
+        <form method="POST" action="{{ route('register.store') }}" class="form">
             @csrf
             <div class="formRow">
                 @error('name')
