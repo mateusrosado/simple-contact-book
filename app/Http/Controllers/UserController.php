@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -21,6 +22,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(Auth::user()){
+            return redirect('contacts');
+        }
         return view('auth.register');
     }
 

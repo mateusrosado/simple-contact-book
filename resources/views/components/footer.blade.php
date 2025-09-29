@@ -1,3 +1,3 @@
-<footer>
-    Todos os direitos reservados  &copy;
+<footer class="footer">
+    &copy; {{ date('Y') }} ContactBook
 </footer>

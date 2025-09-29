@@ -14,13 +14,13 @@ Route::post('/register',[UserController::class,'store'])->name('register.create'
 
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'auth'])->name('auth');
-Route::get('/logout', [AuthController::class,'logout'])->name('logout');
+Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 
 Route::get('/forgot-password', function () {
 })->name('forgot-password');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/contacts', function () {
-        return view('home');
+        return view('contacts');
     })->name('contacts');
 });

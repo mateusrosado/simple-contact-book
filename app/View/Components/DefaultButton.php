@@ -8,17 +8,14 @@ use Illuminate\View\Component;
 
 class DefaultButton extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct(
-        public string $linkto,
-        public string $id,
-        public string $class
+    
+    public $linkto;
+    public $color;
 
-    )
+    public function __construct(string $linkto = "", string $color = 'green')
     {
-        //
+        $this->linkto = $linkto;
+        $this->color = $color;
     }
 
     /**

@@ -7,11 +7,25 @@
         <title>@yield('title')</title>
 
         <!-- Styles / Scripts -->
+        <link href="{{asset('css/theme.css')}}" rel="stylesheet" />
         <link href="{{asset('css/app.css')}}" rel="stylesheet" />
     </head>
     <body>
-        <x-header />
-        @yield('content')
-        <x-footer />
+        <div class="container">
+            <div class="content">
+                <x-header />
+            </div>
+        </div>
+        <div class="container">
+            <div class="content">
+                @yield('content')
+            </div>
+        </div>
+        <div class="container">
+            <div class="content">
+                <x-footer />
+            </div>
+        </div>
+        @stack('scripts')
     </body>
 </html>

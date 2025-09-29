@@ -1,18 +1,33 @@
-@if($message = Session::get('status'))
-    <div class="error">{{ $message }}</div>
-@endif
-@if($errors->any())
-    @foreach($errors->all() as $error)
-        <div class="error">{{ $error }}</div>
-    @endforeach
-@endif
-<form method="POST" action="{{ route('auth') }}">
-    @csrf
-    <label for="email">E-mail: </label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Senha: </label>
-    <input type="password" id="password" name="password" required>
-    <span><a href="{{ route('forgot-password') }}">Esqueceu a senha?</a></span>
-    <button type="submit">Entrar</button>
-    <span>Não tem uma conta? <a href="{{ route('register') }}">Cadastre-se</a></span>
-</form>
+@extends('layouts.app')
+
+@section('title', 'Entrar - ContactBook')
+
+@section('content')
+
+    <section class="login">
+        <form method="POST" action="{{ route('auth') }}" class="form">
+            @csrf
+            <div class="formRow">
+                @error('email')
+                    <p class="error">{{ $message }}</p>
+                @enderror
+                <x-default-input id='email' type='email' labelText='E-mail' value="{{ old('email') }}" required/>
+            </div>
+            <div class="formRow">
+                @error('password')
+                    <p class="error">{{ $message }}</p>
+                @enderror
+                <x-default-input id='password' type='password' labelText='Senha'/>
+                <span><a href="{{ route('forgot-password') }}">Esqueceu a senha?</a></span>
+            </div>
+            <div class="formRow">
+                <x-default-button type="submit">Entrar</x-default-button>
+            <span>Não tem uma conta? <a href="{{ route('register') }}">Cadastre-se</a></span>
+            </div>
+            @if($message = Session::get('status'))
+            <div class="formRow error">{{ $message }}</div>
+            @endif
+        </form>
+    </section>
+
+@endsection

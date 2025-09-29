@@ -1,26 +1,30 @@
 <header>
-    <div class="head_left">
-        <a href="{{route('home')}}">
-            ContactBook
-        </a>
+    <div class="left">
+        <a href="{{route('home')}}">ContactBook&trade;</a>
     </div>
 
-    <div class="head_right">
+    <div class="right">
         @auth
-            <div class="menu_profile">
-                <div class="user_picture">{{substr(auth()->user()->name, 0, 1)}}</div>
+            <div class="profile">
+                <div class="picture">{{substr(auth()->user()->name, 0, 1)}}</div>
 
                 <nav>
-                    <div class="user_infos">
+                    <div class="info">
                         <span>{{auth()->user()->name}}</span>
                     </div>
 
                     <ul>
                         <li>
-                            <a href="/contacts">Minhas Anotações</a>
+                            <a href="/contacts">Meus Contatos</a>
                         </li>
                         <li>
-                            <a href="/logout">Sair</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    Sair
+                                </a>
+                            </form>
                         </li>
                     </ul>
                 </nav>
@@ -28,8 +32,8 @@
         @endauth
 
         @guest
-            <x-default-button class='' id='' linkto='register'>Criar Conta</x-default-button>
-            <x-default-button class='btn_login' id='' linkto='login'>Login</x-default-button>
+            <x-default-button linkto='register' color="leaked">Criar Conta</x-default-button>
+            <x-default-button linkto='login'>Login</x-default-button>
         @endguest
     </div>
 </header>

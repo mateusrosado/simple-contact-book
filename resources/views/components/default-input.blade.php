@@ -1,3 +1,5 @@
+@if ($labelText)
+    <label for="{{ $id }}">{{ $labelText }}</label>
+@endif
 
-<label for="{{ $id }}">E-mail: </label>
-<input type="{{ $type }}" id="{{ $id }}" name="{{ $id }}">
+<input id="{{ $id }}" name="{{ $id }}" type="{{ $type }}" {{ $attributes->merge(['class' => 'input']) }}>

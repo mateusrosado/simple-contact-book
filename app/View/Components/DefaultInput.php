@@ -8,12 +8,15 @@ use Illuminate\View\Component;
 
 class DefaultInput extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $id;
+    public $labelText;
+    public $type;
+    
+    public function __construct(string $id, ?string $labelText = null, string $type = 'text')
     {
-        //
+        $this->id = $id;
+        $this->labelText = $labelText;
+        $this->type = $type;
     }
 
     /**

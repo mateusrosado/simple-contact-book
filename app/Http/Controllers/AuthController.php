@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function index() {
+        if(Auth::user()){
+            return redirect('contacts');
+        }
         return view('auth.login');
     }
     public function auth(Request $request) {
@@ -33,6 +36,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }
