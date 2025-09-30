@@ -66,10 +66,10 @@ O projeto atende aos seguintes requisitos do Mínimo Produto Viável (MVP):
     ```
 
 7.  **Iniciar o ambiente de desenvolvimento:**
-    * **Em um terminal**, inicie o servidor do Laravel:
-        ```bash
-        php artisan serve
-        ```
+    **Em um terminal**, inicie o servidor do Laravel:
+    ```bash
+    php artisan serve
+    ```
 
 8.  **Acessar a aplicação:**
     Abra o seu navegador e acesse o endereço fornecido pelo `php artisan serve` (geralmente `http://127.0.0.1:8000`).
