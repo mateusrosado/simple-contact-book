@@ -3,20 +3,22 @@
         <div class="picture">{{substr($contact->name, 0, 1)}}</div>
         <span class="name">{{$contact->name}}</span>
     </div>
-    <div class="info-box">
-        <i class="fa-solid fa-phone"></i>
-        <span>{{$contact->phone}}</span>
-    </div>
-    <div class="info-box">
-        <i class="fa-solid fa-envelope"></i>
-        <span>{{$contact->email}}</span>
-    </div>
-    @if($contact->address)
+    <div class="box-contacts">
         <div class="info-box">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>{{$contact->address}}</span>
+            <i class="fa-solid fa-phone"></i>
+            <span>{{$contact->phone}}</span>
         </div>
-    @endif
+        <div class="info-box">
+            <i class="fa-solid fa-envelope"></i>
+            <span>{{$contact->email}}</span>
+        </div>
+        @if($contact->address)
+            <div class="info-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>{{$contact->address}}</span>
+            </div>
+        @endif
+    </div>
 </x-modal>
 
 @pushOnce('scripts')

@@ -5,6 +5,7 @@
 @section('content')
 
     <section class="login">
+        <h2>Entrar</h2>
         <form method="POST" action="{{ route('auth') }}" class="form">
             @csrf
             <div class="formRow">

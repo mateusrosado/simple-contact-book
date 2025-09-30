@@ -20,7 +20,7 @@ class ContactController extends Controller
             });
         }
 
-        $contacts = $query->get();
+        $contacts = $query->orderBy('name')->get();
 
         return view('contacts', ['contacts' => $contacts]);
     }
@@ -32,9 +32,10 @@ class ContactController extends Controller
         ]);
 
         $validated = $request->validate([
-            'name' => ['required','unique:contacts'],
-            'phone' => ['required','digits_between:10,11', 'unique:contacts'],
-            'email' => ['required','email', 'unique:contacts'],
+            'name' => ['required', Rule::unique('contacts')->where('user_id', Auth::id())],
+            'phone' => ['required','digits_between:10,11', Rule::unique('contacts')->where('user_id', Auth::id())],
+            'email' => ['required','email', Rule::unique('contacts')->where('user_id', Auth::id())],
+            'address' => [],
         ], [
             'name.required' => 'O campo nome é obrigatório!',
             'name.unique' => 'Já existe um contato com este nome!',
@@ -68,9 +69,10 @@ class ContactController extends Controller
             return back()->with('problem', 'Você não tem permissão para editar este contato.');
         }
         $validated = $request->validate([
-            'name' => ['required', Rule::unique('contacts')->ignore($contact->id)],
-            'phone' => ['required','digits_between:10,11', Rule::unique('contacts')->ignore($contact->id)],
-            'email' => ['required','email', Rule::unique('contacts')->ignore($contact->id)],
+            'name' => ['required', Rule::unique('contacts')->ignore($contact->id)->where('user_id', Auth::id())],
+            'phone' => ['required','digits_between:10,11', Rule::unique('contacts')->ignore($contact->id)->where('user_id', Auth::id())],
+            'email' => ['required','email', Rule::unique('contacts')->ignore($contact->id)->where('user_id', Auth::id())],
+            'address' => [],
         ], [
             'name.required' => 'O campo nome é obrigatório!',
             'name.unique' => 'Já existe um contato com este nome!',

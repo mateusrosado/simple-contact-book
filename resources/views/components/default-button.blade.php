@@ -1,7 +1,10 @@
 
-
-<a href="{{Route::has($linkto) ? route($linkto) : ''}}">
+@if (Route::has($linkto))
+    <a href="{{route($linkto)}}">
+@endif
     <button {{ $attributes->merge(['class' => 'button ' . $color]) }}>
         {{$slot}}
     </button>
-</a>    
+@if (Route::has($linkto))
+    </a>
+@endif 
