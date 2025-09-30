@@ -1,7 +1,7 @@
 <div class="contact" data-contact-id="{{$contact->id}}">
     <details>
         <summary>
-            <div class="picture">{{substr($contact->name, 0, 1)}}</div>
+            <div class="picture">{{ Str::upper(substr($contact->name, 0, 1)) }}</div>
             <span class="name">{{$contact->name}}</span>
         </summary>
         <ul>

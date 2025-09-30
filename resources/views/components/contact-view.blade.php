@@ -1,6 +1,6 @@
 <x-modal title="" id="" mode="view" contactid="view-{{ $contact->id }}">
     <div class="person">
-        <div class="picture">{{substr($contact->name, 0, 1)}}</div>
+        <div class="picture">{{ Str::upper(substr($contact->name, 0, 1)) }}</div>
         <span class="name">{{$contact->name}}</span>
     </div>
     <div class="box-contacts">

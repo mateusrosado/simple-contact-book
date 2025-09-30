@@ -7,7 +7,7 @@
         @auth
             <details>
                 <summary>
-                    <div class="picture">{{substr(auth()->user()->name, 0, 1)}}</div>
+                    <div class="picture">{{ Str::upper(substr(auth()->user()->name, 0, 1)) }}</div>
                 </summary>
                 <nav>
                     <div class="info">
