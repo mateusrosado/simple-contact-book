@@ -9,9 +9,16 @@ use Illuminate\View\Component;
 class Modal extends Component
 {
     public $title;
-    public function __construct(string $title)
+    public $id;
+    public $contactid;
+    public $mode;
+
+    public function __construct(string $title, string $id, string $contactid = "", string $mode = "")
     {
         $this->title = $title;
+        $this->id = $id;
+        $this->contactid = $contactid;
+        $this->mode = $mode;
     }
 
     /**

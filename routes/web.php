@@ -23,5 +23,6 @@ Route::get('/forgot-password', function () {
 Route::middleware(['auth'])->group(function() {
     Route::get('/contacts', [ContactController::class,'index'])->name('contacts');
     Route::post('/contact', [ContactController::class,'store'])->name('contact.store');
-    Route::post('/theme-update', [UserController::class, 'updateTheme'])->name('theme.update');
+    Route::put('/contact/{contact}', [ContactController::class, 'update'])->name('contact.update');
+    Route::delete('/contact/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
 });

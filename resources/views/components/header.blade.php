@@ -1,6 +1,6 @@
 <header>
     <div class="left">
-        <a href="{{route('home')}}">ContactBook&trade;</a>
+        <a href="{{route('home')}}"><i class="fa-regular fa-address-book"></i> ContactBook&trade;</a>
     </div>
 
     <div class="right">

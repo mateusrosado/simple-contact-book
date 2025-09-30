@@ -51,49 +51,4 @@ class UserController extends Controller
         return redirect()->intended('contacts');
 
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-    public function updateTheme()
-    {
-        /** @var \App\Models\User $user */
-        $user = Auth::user();
-
-        if ($user) {
-            $theme = $user->theme === 'dark' ? 'light' : 'dark';
-            $user->update([
-                'theme' => $theme
-            ]);
-        }
-        return back();
-    }
 }
