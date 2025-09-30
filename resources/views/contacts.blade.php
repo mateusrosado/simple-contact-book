@@ -4,48 +4,33 @@
 
 @section('content')
     <section class="contacts">
-        <h3>Olá, <span>{{ auth()->user()->name }}</span>!</h3>
-
-        {{-- Campo de busca --}}
-        <form method="GET" action="{{ route('contacts') }}">
-            <input type="text" name="q" placeholder="Buscar por nome ou email" value="{{ request('q') }}">
-            <button type="submit">Buscar</button>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('problem'))
+            <div class="alert alert-error">
+                {{ session('problem') }}
+            </div>
+        @endif
+        <h3>Olá, <span>{{auth()->user()->name}}</span>!</h3>
+        <form method="GET" action="{{ route('contacts') }}" class="search">
+            <x-default-input id='search' placeholder="Buscar por nome ou email..." value="{{ request('search') }}"/>
+            <x-default-button type="submit"><i class="fa-solid fa-magnifying-glass"></i></x-default-button>
         </form>
-
-        {{-- Lista de contatos --}}
-        @if($contacts->count())
-            @foreach($contacts as $contact)
-                <div>
-                    <p><strong>{{ $contact->name }}</strong> - {{ $contact->email }}</p>
-                    <button onclick="openModal({{ $contact->id }})">Editar</button>
-                </div>
-
-                {{-- Modal para edição do contato --}}
-                <x-modal :title="'Editar Contato'" :contact="$contact" mode="edit"/>
-            @endforeach
+        <x-default-button id="btn-create-contact">Criar contato</x-default-button>
+        @if($contacts)
+            <div class="contacts-box">
+                @foreach($contacts as $contact)
+                    <x-contact :contact="$contact"/>
+                @endforeach
+            </div>
         @else  
             <div>
                 Parece que você ainda não tem contatos, clique no botão abaixo para começar.
             </div>
         @endif
-
-        {{-- Modal para criar novo contato --}}
-        <button onclick="openModal()">Criar contato</button>
-        <x-modal title="Novo Contato" mode="create"/>
     </section>
+    <x-contact-create/>
 @endsection
-
-@push('scripts')
-    <script>
-        function openModal(id = null) {
-            const modal = id ? document.querySelector(`#modal-box[data-id="${id}"]`) : document.querySelector('#modal-box');
-            modal.classList.add('opened');
-        }
-        document.querySelectorAll('#close-modal').forEach(btn => {
-            btn.addEventListener('click', e => {
-                e.preventDefault();
-                e.target.closest('.modal').classList.remove('opened');
-            });
-        });
-    </script>
-@endpush

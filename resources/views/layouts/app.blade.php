@@ -9,6 +9,8 @@
         <!-- Styles / Scripts -->
         <link href="{{asset('css/theme.css')}}" rel="stylesheet" />
         <link href="{{asset('css/app.css')}}" rel="stylesheet" />
+        
+        <script src="https://kit.fontawesome.com/5e0f39ce85.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
