@@ -65,49 +65,68 @@ header .right .button {
   padding: 0.8rem 2.4rem;
 }
 
-header .right .profile{
+header .right details {
   position: relative;
 }
 
-header .right .profile .picture{
+header .right details summary {
+  list-style: none;
+  cursor: pointer;
+}
+header .right details summary::-webkit-details-marker {
+  display: none;
+}
+
+header .right details summary .picture {
   background: var(--primary);
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
   border: 1px solid var(--primary-dark);
-  box-shadow: 0px 3px 6px var(--gray-900);
+  box-shadow: 0px 3px 6px var(--shadow);
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 900;
   color: var(--text-over-primary);
-  cursor: pointer;
 }
 
-header .right .profile nav{
-  background: var(--gray-800);
+header .right details nav {
   position: absolute;
+  top: 100%;
   right: 0;
-  top: 51px;
-  width: 175px;
+  margin-top: 0.8rem;
+  width: max-content;
+  min-width: 180px;
+  background: var(--gray-800);
   border-radius: 0.8rem;
-  border:1px solid var(--gray-900);
-  box-shadow: 0px 3px 6px var(--gray-900);
-  display: none;
-  padding: 10px 15px;
-  flex-direction: column;
-  gap: 0.8rem;
+  border: 1px solid var(--gray-900);
+  box-shadow: 0px 3px 6px var(--shadow);
+  overflow: hidden;
 }
 
-header .right .profile:hover nav{
-  display: flex;
+header .right details ul {
+  list-style: none;
 }
 
-header .right .profile nav ul{
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+header .right details .info,
+header .right details ul li a {
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+}
+
+header .right details .info {
+  border-bottom: 1px solid var(--gray-900);
+}
+
+
+header .right details ul li a {
+  display: block;
+  transition: background-color 0.2s ease-in-out;
+}
+
+header .right details ul li a:hover {
+  background: var(--gray-700);
 }
 
 /*Home*/

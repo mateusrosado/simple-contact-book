@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }} " data-theme="{{ auth()->user()?->theme ?? 'dark' }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
         <!-- Styles / Scripts -->
         <link href="{{asset('css/theme.css')}}" rel="stylesheet" />
         <link href="{{asset('css/app.css')}}" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/5e0f39ce85.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">

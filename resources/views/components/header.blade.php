@@ -5,15 +5,25 @@
 
     <div class="right">
         @auth
-            <div class="profile">
-                <div class="picture">{{substr(auth()->user()->name, 0, 1)}}</div>
-
+            <details>
+                <summary>
+                    <div class="picture">{{substr(auth()->user()->name, 0, 1)}}</div>
+                </summary>
                 <nav>
                     <div class="info">
                         <span>{{auth()->user()->name}}</span>
                     </div>
 
                     <ul>
+                        <li>
+                            <form method="POST" action="{{ route('theme.update') }}">
+                                @csrf
+
+                                <a href="" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    {{ auth()->user()?->theme === 'dark' ? 'Ver no tema claro' : 'Ver no tema escuro' }}
+                                </a>
+                            </form>
+                        </li>
                         <li>
                             <a href="/contacts">Meus Contatos</a>
                         </li>
@@ -28,7 +38,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </details>
         @endauth
 
         @guest

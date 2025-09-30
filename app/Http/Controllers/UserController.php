@@ -83,4 +83,17 @@ class UserController extends Controller
     {
         //
     }
+    public function updateTheme()
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user) {
+            $theme = $user->theme === 'dark' ? 'light' : 'dark';
+            $user->update([
+                'theme' => $theme
+            ]);
+        }
+        return back();
+    }
 }
