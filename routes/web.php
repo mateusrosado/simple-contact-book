@@ -25,4 +25,5 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/contact', [ContactController::class,'store'])->name('contact.store');
     Route::put('/contact/{contact}', [ContactController::class, 'update'])->name('contact.update');
     Route::delete('/contact/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
+    Route::post('/theme-update', [UserController::class, 'updateTheme'])->name('theme.update');
 });
